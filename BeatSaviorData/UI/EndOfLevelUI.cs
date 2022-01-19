@@ -76,6 +76,8 @@ namespace BeatSaviorData
         private readonly TextMeshProUGUI leftBeforeSwing;
         [UIComponent("leftAfterSwing")]
         private readonly TextMeshProUGUI leftAfterSwing;
+        [UIComponent("leftTD")]
+        private readonly TextMeshProUGUI leftTD;
 
         [UIObject("middleBand")]
         private readonly GameObject middleBand;
@@ -98,6 +100,8 @@ namespace BeatSaviorData
         private readonly TextMeshProUGUI rightBeforeSwing;
         [UIComponent("rightAfterSwing")]
         private readonly TextMeshProUGUI rightAfterSwing;
+        [UIComponent("rightTD")]
+        private readonly TextMeshProUGUI rightTD;
         #pragma warning restore 0649
 
         private readonly Color SS = new Color32(0x00, 0xF0, 0xFF, 0xFF), S = new Color32(0xFF, 0xFF, 0xFF, 0xFF), A = new Color32(0x00, 0xFF, 0x00, 0xFF), B = new Color32(0xFF, 0xFF, 0x00, 0xFF), C = new Color32(0xFF, 0xA7, 0x00, 0xFF), DorE = new Color32(0xFF, 0x00, 0x00, 0xFF);
@@ -211,12 +215,16 @@ namespace BeatSaviorData
             // LeftAfterSwing
             leftAfterSwing.color = colors.saberAColor;
             leftAfterSwing.overflowMode = TextOverflowModes.Overflow;
-			#endregion
 
-			#region MiddleSeparator
+            // LeftTD
+            leftTD.color = colors.saberAColor;
+            leftTD.overflowMode = TextOverflowModes.Overflow;
+            #endregion
 
-			// MiddleBand
-			img = middleBand.AddComponent<ImageView>();
+            #region MiddleSeparator
+
+            // MiddleBand
+            img = middleBand.AddComponent<ImageView>();
             img.sprite = BeatSaberMarkupLanguage.Utilities.ImageResources.WhitePixel;
             img.material = BeatSaberMarkupLanguage.Utilities.ImageResources.NoGlowMat;
             img.color = new Color32(255, 255, 255, 100);
@@ -268,6 +276,10 @@ namespace BeatSaviorData
             // rightAfterSwing
             rightAfterSwing.color = colors.saberBColor;
             rightAfterSwing.overflowMode = TextOverflowModes.Overflow;
+
+            // rightTD
+            rightTD.color = colors.saberBColor;
+            rightTD.overflowMode = TextOverflowModes.Overflow;
             #endregion
 
             postParseDone = true;
@@ -407,6 +419,9 @@ namespace BeatSaviorData
 
             // LeftAfterSwing
             leftAfterSwing.text = (at.leftPostswing * 100).ToString("0.##") + " %";
+
+            // LeftTD
+            leftTD.text = at.leftTimeDependence.ToString("0.###");
             #endregion
 
             #region RightSaberStats
@@ -436,6 +451,9 @@ namespace BeatSaviorData
 
             // rightAfterSwing
             rightAfterSwing.text = (at.rightPostswing * 100).ToString("0.##") + " %";
+
+            // rightTD
+            rightTD.text = at.rightTimeDependence.ToString("0.###");
             #endregion
         }
 
